@@ -1,0 +1,13 @@
+# Caddy 反向代理到外部 HTTPS 网站配置
+
+
+########
+		reverse_proxy 127.0.0.1:12345
+########
+
+#以上配置修改为：
+########
+		reverse_proxy https://www.example.com { # 修改为自己选定的 HTTPS 网站
+			header_up Host {upstream_hostport}
+		}
+########
