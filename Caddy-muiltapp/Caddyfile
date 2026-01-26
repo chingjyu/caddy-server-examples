@@ -19,12 +19,18 @@
 	}
 }
 
-server.example.com { # 修改为自己的域名，注意逗号与域名之间有一个空格
+:443, server.example.com { # 修改为自己的域名，注意逗号与域名之间有一个空格
 	tls {
 		protocols tls1.3
 	}
 
 	log log0 # 启用访问日志
+
+    @websocket {
+        header Upgrade websocket
+        path path2app
+	}
+	reverse_proxy @websocket 127.0.0.1:12340 转发给本机特殊应用监听端口。
 
 	@host {
 		host server.example.com # 禁止以 IP 方式访问网站，修改为自己的域名
@@ -32,5 +38,5 @@ server.example.com { # 修改为自己的域名，注意逗号与域名之间有
 	header @host {
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" # 启用 HSTS
 	}
-	root /var/www/html # 修改为自己存放 Web 文件的路径
+	reverse_proxy @host 127.0.0.1:12345 # 反向代理到其他本地应用
 }
