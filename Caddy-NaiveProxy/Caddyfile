@@ -28,7 +28,7 @@ server.example.com { # 修改为自己的域名，注意逗号与域名之间有
 	log log0 # 启用访问日志
 
 	forward_proxy {
-        port 443
+        ports 443
         basic_auth user pass # 用户名和密码
         hide_ip
         hide_via
