@@ -28,6 +28,7 @@
 
     @websocket {
         header Upgrade websocket
+        header Connection *Upgrade*
         path /path2app
 	}
 	reverse_proxy @websocket 127.0.0.1:12340 # 转发给本机特殊应用监听端口。
