@@ -30,7 +30,7 @@
         header Upgrade websocket
         path /path2app
 	}
-	reverse_proxy @websocket 127.0.0.1:12340 转发给本机特殊应用监听端口。
+	reverse_proxy @websocket 127.0.0.1:12340 # 转发给本机特殊应用监听端口。
 
 	@host {
 		host server.example.com # 禁止以 IP 方式访问网站，修改为自己的域名
