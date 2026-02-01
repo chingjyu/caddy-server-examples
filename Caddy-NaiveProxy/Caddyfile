@@ -16,7 +16,7 @@
 	email your@email.com # 修改为自己的电子邮箱
 
 	servers :443 {
-		protocols h3 h2 h1
+		protocols h1 h2 h3
 	}
 }
 
